@@ -11,9 +11,9 @@ from pprint import pprint
 ############## SETUP - CHANGE THINGS HERE ##############
 
 # regex pattern to find all things AI and ML etc.
-#pattern = re.compile(r"[Mm]achine|ML|AI|[Ii]ntelligence|[Rr]obot|[Mm]aker")
+pattern = re.compile(r"[Mm]achine|ML|AI|[Ii]ntelligence|[Rr]obot|[Mm]aker")
 # testing with today available events
-pattern = re.compile(r"[Gg]raduate")
+#pattern = re.compile(r"[Gg]raduate")
 # define how long the user should have to look at the results before the searchable map opens
 wait_time = 5
 # scraping from the Stanford daily events page
