@@ -38,7 +38,7 @@ def get_events(all_events):
             text = event.get_text()
             cool_stuff.append((link, text))
     if flag:
-        print("###################################################")
+        print("\n###################################################")
         print("YJay! Check out these interesting on-campus events:")
         print("###################################################\n")
         for event in cool_stuff:
