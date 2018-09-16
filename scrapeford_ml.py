@@ -9,12 +9,10 @@ from bs4 import BeautifulSoup
 from pprint import pprint
 
 
-############## SETUP - CHANGE THINGS HERE ##############
+# ------------- SETUP - CHANGE THINGS HERE ------------- #
 
 # regex pattern to find all things AI and ML etc.
 pattern = re.compile(r"[Mm]achine|ML|AI|[Ii]ntelligence|[Rr]obot|[Mm]aker")
-# testing with today available events
-#pattern = re.compile(r"[Gg]raduate")
 # define how long the user should have to look at the results
 # before the searchable map opens
 wait_time = 5
@@ -24,11 +22,11 @@ page_url = "https://events.stanford.edu/today"
 page_stub = "https://events.stanford.edu"
 page = requests.get(page_url)
 soup = BeautifulSoup(page.text, "html.parser")
-# events are contained withtin "postcard-link" classed <a>s
-all_events = soup.findAll("a", {"class" : "postcard-link"}, href=True)
+# events are contained within "postcard-link" classed <a>s
+all_events = soup.findAll("a", {"class": "postcard-link"}, href=True)
 
 
-############## ONE FUNCTION ##############
+# ------------- ONE FUNCTION ------------- #
 
 def get_events(all_events):
     flag = False
@@ -39,11 +37,11 @@ def get_events(all_events):
             flag = True
             link = page_stub + event['href']
             text = event.get_text()
-            cool_stuff.append((link, event))
+            cool_stuff.append((link, text))
     if flag:
-        print("##########################################################################")
-        print("YJay! There's something interesting happening for you today! Check it out:")
-        print("##########################################################################")
+        print("###################################################")
+        print("YJay! Check out these interesting on-campus events:")
+        print("###################################################\n")
         for event in cool_stuff:
             # opening the event's detail page
             webbrowser.open(event[0])
@@ -54,12 +52,13 @@ def get_events(all_events):
         # opening the searchable map in order to find out
         # how to get there quickly
         webbrowser.open("https://campus-map.stanford.edu/")
-    # save the resulting list of tuples just for fun
+    # save the resulting list of tuples, just for fun
     return cool_stuff
 
 
-############## RUN THAT STUFF ##############
+# ------------- RUN THAT STUFF ------------- #
 
 event_list = get_events(all_events)
-if not event_list:  # if there are no matching events
+# print some feedback if there are no matching events
+if not event_list:
     print("Take today off. There's nothing going on that interests you.")
