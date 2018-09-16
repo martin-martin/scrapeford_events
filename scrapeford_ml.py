@@ -6,7 +6,6 @@ import requests
 import webbrowser
 import time
 from bs4 import BeautifulSoup
-from pprint import pprint
 
 
 # ------------- SETUP - CHANGE THINGS HERE ------------- #
